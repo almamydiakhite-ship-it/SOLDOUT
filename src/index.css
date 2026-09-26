@@ -309,3 +309,22 @@ body {
 .so-marquee-track:hover {
   animation-play-state: paused;
 }
+
+@keyframes scan-beam {
+  0% {
+    top: 6%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 88%;
+    opacity: 1;
+  }
+  100% {
+    top: 6%;
+    opacity: 0.8;
+  }
+}
+
+.animate-scan-beam {
+  animation: scan-beam 1.2s ease-in-out infinite;
+}

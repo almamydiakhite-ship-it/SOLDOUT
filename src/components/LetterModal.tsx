@@ -62,7 +62,7 @@ export default function LetterModal({
                 key={chapter.no}
                 className="border-t so-hairline py-7 first:border-t-0 first:pt-0"
               >
-                <p className="so-label text-[#e7a3b8]">Lettre {chapter.no}</p>
+                <p className="so-label text-[#e7a3b8]">Paragraphe {chapter.no}</p>
                 <a
                   href={`#collection`}
                   onClick={(e) => {

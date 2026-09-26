@@ -7,7 +7,7 @@ interface FingerprintLogoProps {
 
 export function FingerprintLogo({
   className = 'h-8 w-auto text-current',
-  strokeWidth = 2.4,
+  strokeWidth = 2.6,
 }: FingerprintLogoProps) {
   return (
     <svg
@@ -21,74 +21,114 @@ export function FingerprintLogo({
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      {/* Central core loop */}
-      <path d="M 49 76 C 48 70, 48 64, 50 58 C 50.8 54, 53.5 54, 54 58 C 54.5 64, 53 72, 51 80" />
-      <path d="M 45 78 C 44 68, 45 56, 49 48 C 52 44, 57 44, 59 49 C 61 56, 59 68, 56 79 C 55 83, 53 87, 51 91" />
+      {/* TOP SEGMENTED HORIZONTAL ARCHES (WhatsApp 2026-09-26 04.56.45) */}
+      {/* Row 1 (topmost dashes) */}
+      <path d="M 34 5.5 L 44 5.5" />
+      <path d="M 48 5 L 56 5" />
+      <path d="M 60 5.5 L 70 5.5" />
 
-      {/* Inner loops */}
-      <path d="M 41 81 C 40 68, 41 51, 46 42 C 50 36, 61 36, 64 43 C 67 52, 65 67, 61 80 C 58 87, 54 94, 49 101" />
-      <path d="M 37 84 C 36 67, 38 46, 44 36 C 49 29, 66 29, 70 38 C 73 48, 71 66, 66 82 C 63 90, 57 99, 51 107" />
+      {/* Row 2 */}
+      <path d="M 26 10.5 L 35 10.5" />
+      <path d="M 39 10 L 49 10" />
+      <path d="M 53 10 L 63 10" />
+      <path d="M 67 10.5 L 77 10.5" />
 
-      {/* Core interior accents */}
-      <path d="M 48 62 C 49 66, 49 71, 48 75" strokeWidth={strokeWidth * 0.9} />
-      <path d="M 52 64 C 52.5 68, 52 72, 51 76" strokeWidth={strokeWidth * 0.9} />
+      {/* Row 3 */}
+      <path d="M 19 16.5 C 24 16, 29 16, 33 16" />
+      <path d="M 37 15.5 C 43 15, 50 15, 55 15.5" />
+      <path d="M 59 15.5 C 65 15, 71 15.5, 76 16" />
+      <path d="M 80 16.5 L 85 17" />
 
-      {/* Mid whorl ridges */}
-      <path d="M 33 87 C 32 68, 34 43, 42 30 C 47 23, 71 23, 76 33 C 79 44, 77 64, 72 82 C 68 93, 61 104, 54 113" />
-      <path d="M 29 89 C 28 67, 31 39, 40 25 C 46 17, 76 17, 82 28 C 85 41, 83 63, 77 83 C 73 95, 65 108, 57 118" />
+      {/* Row 4 */}
+      <path d="M 14 23.5 C 20 22.5, 26 22.5, 30 22.5" />
+      <path d="M 34 22 C 43 21, 58 21, 66 22" />
+      <path d="M 71 22.5 C 77 23, 83 23.5, 89 25" />
 
-      {/* Outer expanding ridges with authentic broken segments */}
-      <path d="M 25 88 C 24 68, 27 38, 37 21 C 44 12, 80 12, 87 23 C 89 29, 90 38, 88 47" />
-      <path d="M 86 54 C 85 64, 82 76, 78 86 C 73 98, 65 111, 56 122" />
+      {/* Row 5 */}
+      <path d="M 10 31.5 C 16 30, 22 29.5, 27 29.5" />
+      <path d="M 31 29 C 41 27.5, 59 27.5, 69 29" />
+      <path d="M 74 29.5 C 81 30.5, 87 32, 92 34" />
 
-      <path d="M 22 84 C 21 68, 24 40, 33 18 C 39 9, 83 9, 90 20" />
-      <path d="M 92 27 C 94 36, 94 48, 91 60 C 88 73, 83 87, 76 100 C 70 111, 61 123, 52 130" />
+      {/* Row 6 */}
+      <path d="M 7 40 C 13 38, 19 37, 24 37" />
+      <path d="M 28 36.5 C 39 34.5, 62 34.5, 73 36.5" />
+      <path d="M 78 37.5 C 85 39, 90 41, 95 44" />
 
-      {/* Topmost arches / crown */}
-      <path d="M 38 12 C 45 5, 74 5, 82 12" />
-      <path d="M 43 7 C 49 2, 70 2, 76 7" />
-      <path d="M 49 3 C 53 1, 65 1, 69 3" strokeWidth={strokeWidth * 0.9} />
+      {/* Row 7 */}
+      <path d="M 5 49 C 11 47, 17 45.5, 22 45.5" />
+      <path d="M 26 44.5 C 38 42, 63 42, 75 44.5" />
+      <path d="M 80 46 C 86 48, 91 50.5, 96 54" />
 
-      {/* Left flank and lower delta curves */}
-      <path d="M 20 73 C 20 60, 22 47, 27 34" />
-      <path d="M 18 80 C 17 67, 20 54, 24 43" />
-      <path d="M 16 88 C 15 76, 17 63, 21 52" />
-      <path d="M 14 96 C 13 85, 15 73, 19 62" />
-      <path d="M 12 103 C 11 93, 13 82, 17 72" />
-      <path d="M 10 110 C 9 101, 12 90, 16 80" />
+      {/* MIDDLE CONCENTRIC LOOP ARCHES */}
+      <path d="M 4 58.5 C 9 56, 16 54, 21 54" />
+      <path d="M 25 53 C 36 50, 65 50, 76 53" />
+      <path d="M 81 55 C 86 57.5, 91 61, 95 65" />
 
-      {/* Bottom recurves and sweeps */}
-      <path d="M 22 93 C 26 99, 31 106, 37 112 C 43 118, 48 123, 53 127" />
-      <path d="M 26 98 C 30 105, 36 112, 42 118 C 47 122, 51 125, 54 128" />
-      <path d="M 30 103 C 35 110, 41 116, 47 122" />
-      <path d="M 35 109 C 40 115, 45 120, 50 124" />
-      <path d="M 39 116 C 43 120, 47 124, 51 127" />
+      <path d="M 4 68 C 8 65.5, 14 63, 19 62.5" />
+      <path d="M 23 61.5 C 34 58, 66 58, 77 61.5" />
+      <path d="M 81 64 C 86 67, 90 71, 93 75.5" />
 
-      {/* Right flank ridges and descending lines */}
-      <path d="M 82 66 C 82 76, 80 86, 75 96 C 71 105, 65 114, 58 123" />
-      <path d="M 87 63 C 86 74, 83 85, 78 96 C 73 106, 66 116, 59 125" />
-      <path d="M 90 73 C 89 83, 85 94, 79 104 C 74 113, 67 122, 60 129" />
-      <path d="M 93 84 C 91 93, 87 102, 81 111 C 76 119, 70 126, 63 131" />
+      {/* CORE LOOP SYSTEM */}
+      {/* Outer core loop */}
+      <path d="M 21 72 C 22 66, 32 63.5, 40 63 C 51 62.5, 63 64, 71 70 C 74 72.5, 77 76, 78 81" />
 
-      {/* Authentic minutiae: dots and islands */}
-      <circle cx="14" cy="116" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="18" cy="122" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="24" cy="126" r="1.4" fill="currentColor" stroke="none" />
-      <path d="M 27 127 C 29 129, 32 130, 34 131" />
-      <circle cx="39" cy="132" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="45" cy="133" r="1.4" fill="currentColor" stroke="none" />
-      <path d="M 53 133 C 55 133, 57 132, 59 131" />
-      <circle cx="66" cy="132" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="72" cy="129" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="77" cy="124" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="83" cy="118" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="88" cy="110" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="92" cy="100" r="1.4" fill="currentColor" stroke="none" />
-      <path d="M 85 41 C 84 45, 82 48, 80 50" />
-      <circle cx="78" cy="20" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="31" cy="28" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="17" cy="102" r="1.4" fill="currentColor" stroke="none" />
-      <circle cx="11" cy="85" r="1.4" fill="currentColor" stroke="none" />
+      {/* Mid core loop */}
+      <path d="M 25 80 C 26 74, 34 70, 44 69 C 55 69, 64 73, 67 80 C 69 84, 69 89, 68 94" />
+
+      {/* Central hook & loop */}
+      <path d="M 32 89 C 32 81, 38 76, 47 75 C 54 75, 59 78.5, 61 85 C 62 90, 61 97, 59 104" />
+      <path d="M 39 96 C 39 88, 43 82.5, 49 82 C 53 82, 55 85, 55 90 C 55 97, 52 104, 49 110" />
+      <path d="M 45 92 C 45 89, 47 87, 49 87 C 51 87, 51 89, 50 93 L 49 101" strokeWidth={strokeWidth * 0.9} />
+
+      {/* INNER DESCENDING BASE RIDGES */}
+      <path d="M 36 104 C 38 109, 41 114, 45 119" />
+      <path d="M 41 112 C 43 117, 46 122, 49 126" />
+      <path d="M 33 112 C 36 117, 40 122, 44 127" />
+      <path d="M 28 118 C 32 123, 36 127, 41 130" />
+
+      {/* LEFT FLANK DESCENDING RIDGES */}
+      <path d="M 5 77 C 8 74.5, 13 73, 17 73" />
+      <path d="M 7 85 C 10 83, 15 82, 19 82" />
+      <path d="M 10 93 C 14 91, 19 90, 24 90" />
+      <path d="M 14 100 C 18 99, 23 99, 27 101" />
+      <path d="M 18 107 C 22 107, 26 108, 30 111" />
+
+      {/* RIGHT FLANK DESCENDING RIDGES */}
+      <path d="M 82 72 C 86 76, 88 81, 90 86" />
+      <path d="M 78 81 C 82 86, 84 92, 85 98" />
+      <path d="M 74 89 C 77 95, 79 101, 80 108" />
+      <path d="M 70 97 C 73 103, 74 109, 74 116" />
+      <path d="M 65 104 C 67 110, 68 116, 68 122" />
+      <path d="M 60 111 C 62 116, 62 121, 62 126" />
+      <path d="M 55 117 C 56 121, 56 125, 56 129" />
+
+      {/* DISTINCTIVE PERIMETER MINUTIAE: DOTS & SHORT DASHES */}
+      {/* Left perimeter droplets & dots */}
+      <circle cx="4" cy="86" r="1.8" fill="currentColor" stroke="none" />
+      <circle cx="6" cy="94" r="1.8" fill="currentColor" stroke="none" />
+      <circle cx="9" cy="102" r="1.8" fill="currentColor" stroke="none" />
+      <circle cx="13" cy="110" r="1.8" fill="currentColor" stroke="none" />
+      <circle cx="18" cy="117" r="1.8" fill="currentColor" stroke="none" />
+      <circle cx="24" cy="124" r="1.8" fill="currentColor" stroke="none" />
+      <circle cx="31" cy="129" r="1.8" fill="currentColor" stroke="none" />
+
+      {/* Right perimeter dashed columns & dots */}
+      <circle cx="96" cy="62" r="1.7" fill="currentColor" stroke="none" />
+      <circle cx="94" cy="71" r="1.7" fill="currentColor" stroke="none" />
+      <circle cx="91" cy="80" r="1.7" fill="currentColor" stroke="none" />
+      <circle cx="88" cy="89" r="1.7" fill="currentColor" stroke="none" />
+      <circle cx="84" cy="98" r="1.7" fill="currentColor" stroke="none" />
+      <circle cx="79" cy="107" r="1.7" fill="currentColor" stroke="none" />
+      <circle cx="73" cy="115" r="1.7" fill="currentColor" stroke="none" />
+      <circle cx="67" cy="122" r="1.7" fill="currentColor" stroke="none" />
+      <circle cx="60" cy="128" r="1.7" fill="currentColor" stroke="none" />
+
+      {/* Top-corner accent minutiae */}
+      <circle cx="78" cy="8" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="83" cy="12" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="89" cy="18" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="93" cy="26" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="97" cy="35" r="1.5" fill="currentColor" stroke="none" />
     </svg>
   );
 }

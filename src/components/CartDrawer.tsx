@@ -143,18 +143,27 @@ export default function CartDrawer({ onCheckout }: CartDrawerProps) {
                 {total.toLocaleString('fr-FR')} FCFA
               </span>
             </div>
-            <p className="mt-2 text-[0.6875rem] text-[#6d6577]">
-              Confirmation et modalité de livraison sur WhatsApp.
-            </p>
+            <div className="mt-4 flex items-center gap-2.5 rounded-xl border so-hairline bg-[#100d14] px-3.5 py-2.5">
+              <FingerprintLogo className="h-6 w-auto text-[#e7a3b8]" strokeWidth={2.4} />
+              <div className="flex flex-col">
+                <span className="text-[0.6875rem] font-medium text-[#f4f1ec]">
+                  Touche d'empreinte biométrique
+                </span>
+                <span className="text-[0.5625rem] text-[#9b93a3]">
+                  Scannez votre empreinte à l'étape suivante pour sceller votre pièce
+                </span>
+              </div>
+            </div>
+
             <button
               type="button"
               onClick={() => {
                 closeCart();
                 onCheckout();
               }}
-              className="so-btn so-btn-solid so-btn-sheen mt-5 w-full justify-between"
+              className="so-btn so-btn-solid so-btn-sheen mt-4 w-full justify-between"
             >
-              <span>Commander</span>
+              <span>Commander & Scanner</span>
               <ArrowRight size={15} strokeWidth={2.6} />
             </button>
           </footer>

@@ -10,7 +10,7 @@ const features = [
   {
     icon: Layers,
     title: 'Exclusivité',
-    body: 'Quatre pièces pour Drop 01. Une fois parties, elles ne reviennent pas.',
+    body: 'Quatre designs différents pour Drop 01. Une fois parties, elles ne reviennent pas.',
   },
   {
     icon: Sparkles,
