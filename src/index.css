@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --color-ink-950: #08070a;
+    --color-ink-900: #0c0a0f;
+    --color-ink-850: #120f16;
+    --color-ink-800: #17141d;
+    --color-ink-700: #211c29;
+    --color-ink-600: #2e2736;
+    --color-bone: #f4f1ec;
+    --color-fog: #9b93a3;
+    --color-fog-dim: #6d6577;
+    --color-rose: #e7a3b8;
+    --color-rose-deep: #c2506f;
+    --color-hot: #d62a4f;
+
+    --font-display: "Anton", "Arial Narrow", sans-serif;
+    --font-editorial: "Instrument Serif", Georgia, serif;
+    --font-body: "Chivo", "Helvetica Neue", sans-serif;
+  }
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.so-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
+.so-hairline {
+  border-color: rgba(244, 241, 236, 0.11);
+}
+
+.so-label {
+  font-family: var(--font-body);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.so-wordmark {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 0.86;
+}
+
+.so-editorial {
+  font-family: var(--font-editorial);
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.so-btn {
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.9rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s, color 0.35s, border-color 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+
+.so-btn:active {
+  transform: scale(0.975);
+}
+
+.so-btn-solid {
+  background: var(--color-bone);
+  color: var(--color-ink-950);
+}
+
+.so-btn-solid:hover {
+  background: var(--color-rose);
+}
+
+.so-btn-hot {
+  background: var(--color-hot);
+  color: var(--color-bone);
+}
+
+.so-btn-hot:hover {
+  background: #dd5672;
+}
+
+.so-btn-ghost {
+  border: 1px solid rgba(244, 241, 236, 0.24);
+  color: var(--color-bone);
+}
+
+.so-btn-ghost:hover {
+  border-color: var(--color-rose);
+  color: var(--color-rose);
+}
+
+.so-btn-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: translateX(-120%);
+}
+
+.so-btn-sheen:hover::after {
+  animation: 0.8s so-sweep;
+}
+
+.so-field {
+  width: 100%;
+  border: 1px solid rgba(244, 241, 236, 0.14);
+  background-color: rgba(23, 20, 29, 0.7);
+  color: var(--color-bone);
+  border-radius: 0.5rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.9375rem;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+.so-field::placeholder {
+  color: var(--color-fog-dim);
+}
+
+.so-field:focus {
+  border-color: var(--color-rose);
+  background-color: rgba(23, 20, 29, 0.95);
+  outline: none;
+}
+
+/* 
+ * L'ENVELOPPE : 
+ * De couleur blanche, entièrement fermée, avec cachet de cire scellé et empreinte digitale réaliste
+ */
+.so-envelope-wrapper {
+  perspective: 1400px;
+  width: 100%;
+  max-width: 30rem;
+}
+
+.so-envelope {
+  aspect-ratio: 3 / 2;
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.85), 0 0 40px rgba(244, 241, 236, 0.04);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.so-envelope:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 35px 70px -20px rgba(0, 0, 0, 0.95), 0 0 50px rgba(231, 163, 184, 0.15);
+}
+
+.so-envelope-white-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #ffffff, #f0eee9);
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.so-envelope-white-folds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Left diagonal fold of white envelope */
+.so-envelope-fold-left {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #f7f6f2 0%, #ebe7df 100%);
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Right diagonal fold of white envelope */
+.so-envelope-fold-right {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(225deg, #f7f6f2 0%, #ebe7df 100%);
+  clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Bottom pocket flap of white envelope */
+.so-envelope-white-front {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(180deg, #faf9f6 0%, #ede8de 100%);
+  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+  filter: drop-shadow(0 -4px 8px rgba(0, 0, 0, 0.06));
+}
+
+/* Top flap of white envelope, fully closed flat over the envelope */
+.so-envelope-white-flap {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f1ea 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 56%);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.12));
+  transform-origin: top;
+  transform: rotateX(0deg); /* Entièrement fermée */
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Luxury wax seal holding the white envelope completely closed */
+.so-envelope-seal {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 35%, #de4e73 0%, #9e1f3d 100%);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+}
+
+.so-envelope:hover .so-envelope-seal {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 10px 24px -3px rgba(194, 80, 111, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Inner letter preview lines subtle watermark through the white envelope */
+.so-envelope-seal-ring {
+  position: absolute;
+  inset: 3px;
+  border-radius: 9999px;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+@keyframes so-sweep {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes so-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes so-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes so-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.so-rise {
+  animation: 0.9s cubic-bezier(0.16, 1, 0.3, 1) both so-rise;
+}
+
+.so-fade {
+  animation: 1.2s both so-fade;
+}
+
+.so-marquee-track {
+  animation: 35s linear infinite so-marquee;
+}
+
+.so-marquee-track:hover {
+  animation-play-state: paused;
+}

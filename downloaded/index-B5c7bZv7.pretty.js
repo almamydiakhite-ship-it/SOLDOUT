@@ -1,0 +1,804 @@
+import {
+  c as d,
+  j as e,
+  L as p,
+  F as n,
+  u as b,
+  r as h,
+  X as N,
+  a as o,
+  A as i,
+  i as c,
+  m,
+  P as x,
+  b as g,
+  d as v,
+  W as f,
+} from "./index-CHCgfVcq.js";
+import { F as k, T as y, R as r, P as w } from "./Reveal-B2Dlt-fn.js";
+const L = [
+    ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+    [
+      "path",
+      { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" },
+    ],
+    ["path", { d: "M2 12h20", key: "9i4pu4" }],
+  ],
+  q = d("globe", L);
+const T = [
+    [
+      "path",
+      {
+        d: "M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z",
+        key: "zw3jo",
+      },
+    ],
+    [
+      "path",
+      {
+        d: "M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12",
+        key: "1wduqc",
+      },
+    ],
+    [
+      "path",
+      {
+        d: "M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17",
+        key: "kqbvx6",
+      },
+    ],
+  ],
+  A = d("layers", T);
+const C = [
+    [
+      "path",
+      {
+        d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+        key: "oel41y",
+      },
+    ],
+    ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }],
+  ],
+  S = d("shield-check", C);
+const E = [
+    [
+      "path",
+      {
+        d: "M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z",
+        key: "1s2grr",
+      },
+    ],
+    ["path", { d: "M20 2v4", key: "1rf3ol" }],
+    ["path", { d: "M22 4h-4", key: "gwowj6" }],
+    ["circle", { cx: "4", cy: "20", r: "2", key: "6kqj1y" }],
+  ],
+  P = d("sparkles", E);
+function z({ onOpen: l }) {
+  return e.jsxs("div", {
+    className: "flex flex-col items-center gap-6",
+    children: [
+      e.jsxs("button", {
+        type: "button",
+        onClick: l,
+        className: "so-envelope",
+        "aria-label": "Appuyer sur l’enveloppe pour découvrir la lettre",
+        children: [
+          e.jsx("span", {
+            className: "so-envelope-back",
+            "aria-hidden": "true",
+          }),
+          e.jsx("span", {
+            className: "so-envelope-sheet",
+            "aria-hidden": "true",
+            children: e.jsx("span", {
+              className: "so-envelope-sheet-inner",
+              children: p.map((t) =>
+                e.jsxs(
+                  "span",
+                  {
+                    className: "so-envelope-line",
+                    children: [
+                      e.jsx("span", {
+                        className: "so-envelope-line-no",
+                        children: t.no,
+                      }),
+                      t.title,
+                    ],
+                  },
+                  t.no,
+                ),
+              ),
+            }),
+          }),
+          e.jsx("span", {
+            className: "so-envelope-front",
+            "aria-hidden": "true",
+          }),
+          e.jsx("span", {
+            className: "so-envelope-flap",
+            "aria-hidden": "true",
+            children: e.jsx("span", {
+              className: "so-envelope-seal",
+              children: e.jsx(n, {
+                className: "h-7 w-auto text-bone",
+                strokeWidth: 4,
+              }),
+            }),
+          }),
+        ],
+      }),
+      e.jsx("p", {
+        className: "so-label text-center text-[0.5625rem] text-fog",
+        children: "Appuyez sur l’enveloppe pour découvrir la lettre",
+      }),
+    ],
+  });
+}
+function I({ open: l, onClose: t }) {
+  return (
+    b(l),
+    h.useEffect(() => {
+      if (!l) return;
+      const s = (a) => {
+        a.key === "Escape" && t();
+      };
+      return (
+        window.addEventListener("keydown", s),
+        () => window.removeEventListener("keydown", s)
+      );
+    }, [l, t]),
+    e.jsxs("div", {
+      className: `fixed inset-0 z-[90] overflow-y-auto transition-opacity duration-400 ${l ? "opacity-100" : "pointer-events-none opacity-0"}`,
+      role: "dialog",
+      "aria-modal": "true",
+      "aria-label": "The Letter",
+      "aria-hidden": !l,
+      inert: !l,
+      children: [
+        e.jsx("div", {
+          className: "fixed inset-0 bg-ink-950/90 backdrop-blur-md",
+          onClick: t,
+          "aria-hidden": "true",
+        }),
+        e.jsx("div", {
+          className:
+            "relative mx-auto my-6 w-[calc(100%-1.5rem)] max-w-2xl md:my-16",
+          children: e.jsxs("article", {
+            className:
+              "relative overflow-hidden rounded-3xl border so-hairline bg-ink-850 px-6 py-12 md:px-14 md:py-16",
+            children: [
+              e.jsx("button", {
+                type: "button",
+                onClick: t,
+                className:
+                  "absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border so-hairline text-fog transition-colors hover:text-bone",
+                "aria-label": "Fermer la lettre",
+                children: e.jsx(N, { size: 18 }),
+              }),
+              e.jsx(n, { className: "h-12 w-auto text-rose/70" }),
+              e.jsx("p", {
+                className: "so-label mt-8 text-fog",
+                children: "Drop 01 — The Letter",
+              }),
+              e.jsxs("h2", {
+                className:
+                  "so-editorial mt-3 text-4xl leading-[1.05] text-bone md:text-5xl",
+                children: [
+                  "Quatre lettres, ",
+                  e.jsx("em", { className: "text-rose", children: "une" }),
+                  " collection",
+                ],
+              }),
+              e.jsx("ol", {
+                className: "mt-10 flex flex-col",
+                children: p.map((s) =>
+                  e.jsxs(
+                    "li",
+                    {
+                      className:
+                        "border-t so-hairline py-7 first:border-t-0 first:pt-0",
+                      children: [
+                        e.jsxs("p", {
+                          className: "so-label text-rose",
+                          children: ["Lettre ", s.no],
+                        }),
+                        e.jsx(o, {
+                          to: "/produits/$productId",
+                          params: { productId: s.productId },
+                          onClick: t,
+                          className:
+                            "so-wordmark mt-2 block text-2xl text-bone transition-colors duration-300 hover:text-rose md:text-3xl",
+                          children: s.title,
+                        }),
+                        e.jsx("p", {
+                          className:
+                            "mt-3 text-sm leading-relaxed text-fog md:text-base",
+                          children: s.body,
+                        }),
+                      ],
+                    },
+                    s.no,
+                  ),
+                ),
+              }),
+              e.jsxs("div", {
+                className: "mt-10 border-t so-hairline pt-8",
+                children: [
+                  e.jsx("p", {
+                    className:
+                      "so-editorial text-lg leading-relaxed text-fog md:text-xl",
+                    children:
+                      "Quatre lettres, quatre pièces. Sur chacune, ton empreinte : la seule signature que personne ne peut copier.",
+                  }),
+                  e.jsx("p", {
+                    className: "so-wordmark mt-6 text-xl text-bone",
+                    children: "Détermine ton unicité.",
+                  }),
+                  e.jsx("p", {
+                    className: "so-label mt-2 text-fog-dim",
+                    children: "— Sold Out",
+                  }),
+                  e.jsxs(o, {
+                    to: "/",
+                    hash: "collection",
+                    onClick: t,
+                    className: "so-btn so-btn-solid so-btn-sheen mt-8",
+                    children: [
+                      "Voir les quatre pièces ",
+                      e.jsx(i, { size: 15, strokeWidth: 2.6 }),
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          }),
+        }),
+      ],
+    })
+  );
+}
+const _ = [
+    {
+      Icon: k,
+      title: "Unicité",
+      body: "Chaque pièce porte ton empreinte digitale imprimée. Aucune autre ne lui ressemblera.",
+    },
+    {
+      Icon: A,
+      title: "Exclusivité",
+      body: "Quatre pièces pour Drop 01. Une fois parties, elles ne reviennent pas.",
+    },
+    {
+      Icon: P,
+      title: "Identité",
+      body: "Tu ne portes pas un vêtement, tu portes ta propre identité !",
+    },
+    {
+      Icon: y,
+      title: "Livraison mondiale",
+      body: "Nous livrons partout dans le monde. Délai et frais confirmés sur WhatsApp.",
+    },
+    {
+      Icon: S,
+      title: "Paiement sécurisé",
+      body: "Rien à payer sur le site. Le mode de paiement se règle avec nous sur WhatsApp.",
+    },
+  ],
+  W = [
+    {
+      no: "01",
+      title: "Choisis ta lettre",
+      body: "Parcours les quatre pièces, sélectionne ta taille et ajoute au panier.",
+    },
+    {
+      no: "02",
+      title: "Envoie ton empreinte",
+      body: "Une photo nette de ton doigt pour chaque pièce. C’est elle qui sera imprimée.",
+    },
+    {
+      no: "03",
+      title: "Confirme sur WhatsApp",
+      body: "Le récapitulatif part sur notre ligne avec tes fichiers. On te répond avec le délai.",
+    },
+  ],
+  M = [
+    "Uniqueness is identity",
+    "Détermine ton unicité",
+    "Drop 01 — The Letter",
+    "Livraison mondiale",
+  ];
+function R() {
+  const [l, t] = h.useState(!1);
+  return e.jsxs(e.Fragment, {
+    children: [
+      e.jsxs("section", {
+        className: "relative isolate flex min-h-dvh items-end overflow-hidden",
+        children: [
+          e.jsx("img", {
+            src: c("/img/hero-backdrop.jpg", {
+              w: 1800,
+              h: 1200,
+              fit: "cover",
+            }),
+            alt: "",
+            "aria-hidden": "true",
+            className: "absolute inset-0 h-full w-full object-cover",
+          }),
+          e.jsx("div", {
+            className:
+              "absolute inset-0 bg-linear-to-t from-ink-950 via-ink-950/82 to-ink-950/55",
+            "aria-hidden": "true",
+          }),
+          e.jsxs("div", {
+            className:
+              "relative mx-auto w-full max-w-[1400px] px-5 pb-16 pt-36 md:px-10 md:pb-24",
+            children: [
+              e.jsxs("div", {
+                className: "so-fade flex items-center gap-3",
+                children: [
+                  e.jsx("span", {
+                    className: "h-px w-10 bg-rose",
+                    "aria-hidden": "true",
+                  }),
+                  e.jsx("p", {
+                    className: "so-label text-rose",
+                    children: "Drop 01 — The Letter",
+                  }),
+                ],
+              }),
+              e.jsxs("h1", {
+                className:
+                  "so-wordmark so-rise mt-6 text-[clamp(3rem,12vw,9.5rem)] text-bone",
+                children: [
+                  "Détermine",
+                  e.jsx("br", {}),
+                  e.jsx("span", {
+                    className: "text-rose",
+                    children: "ton unicité",
+                  }),
+                ],
+              }),
+              e.jsxs("div", {
+                className:
+                  "mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-end",
+                children: [
+                  e.jsx("p", {
+                    className:
+                      "so-editorial so-fade max-w-xl text-xl leading-snug text-fog md:text-2xl",
+                    children:
+                      "Quatre t-shirts, quatre lettres écrites pour celles et ceux qui n'entrent pas dans le moule. Sur chacun, ton empreinte digitale — la seule signature que personne ne peut reproduire.",
+                  }),
+                  e.jsxs("div", {
+                    className: "so-fade flex flex-col gap-4",
+                    children: [
+                      e.jsxs("div", {
+                        className: "flex flex-wrap gap-3",
+                        children: [
+                          e.jsxs(o, {
+                            to: "/",
+                            hash: "collection",
+                            className: "so-btn so-btn-solid so-btn-sheen",
+                            children: [
+                              "Voir la collection ",
+                              e.jsx(i, { size: 15, strokeWidth: 2.6 }),
+                            ],
+                          }),
+                          e.jsx("button", {
+                            type: "button",
+                            onClick: () => t(!0),
+                            className: "so-btn so-btn-ghost",
+                            children: "Lire la lettre",
+                          }),
+                        ],
+                      }),
+                      e.jsxs("dl", {
+                        className:
+                          "mt-2 grid grid-cols-3 gap-4 border-t so-hairline pt-6",
+                        children: [
+                          e.jsxs("div", {
+                            children: [
+                              e.jsx("dt", {
+                                className:
+                                  "so-label text-[0.5625rem] text-fog-dim",
+                                children: "Pièces",
+                              }),
+                              e.jsx("dd", {
+                                className:
+                                  "so-wordmark mt-1.5 text-2xl text-bone",
+                                children: "04",
+                              }),
+                            ],
+                          }),
+                          e.jsxs("div", {
+                            children: [
+                              e.jsx("dt", {
+                                className:
+                                  "so-label text-[0.5625rem] text-fog-dim",
+                                children: "Prix unique",
+                              }),
+                              e.jsx("dd", {
+                                className:
+                                  "so-wordmark mt-1.5 text-2xl text-bone",
+                                children: m(x),
+                              }),
+                            ],
+                          }),
+                          e.jsxs("div", {
+                            children: [
+                              e.jsx("dt", {
+                                className:
+                                  "so-label text-[0.5625rem] text-fog-dim",
+                                children: "Livraison",
+                              }),
+                              e.jsx("dd", {
+                                className:
+                                  "so-wordmark mt-1.5 text-2xl text-bone",
+                                children: "Monde entier",
+                              }),
+                            ],
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      }),
+      e.jsx("div", {
+        className: "overflow-hidden border-y so-hairline bg-ink-900 py-4",
+        children: e.jsx("div", {
+          className: "so-marquee-track flex w-max",
+          children: [0, 1].map((s) =>
+            e.jsx(
+              "div",
+              {
+                className: "flex shrink-0",
+                "aria-hidden": s === 1,
+                children: M.map((a) =>
+                  e.jsxs(
+                    "span",
+                    {
+                      className:
+                        "so-label flex shrink-0 items-center gap-10 pr-10 text-fog",
+                      children: [
+                        a,
+                        e.jsx(n, {
+                          className: "h-4 w-auto text-rose/60",
+                          strokeWidth: 4,
+                        }),
+                      ],
+                    },
+                    `${s}-${a}`,
+                  ),
+                ),
+              },
+              s,
+            ),
+          ),
+        }),
+      }),
+      e.jsx("section", {
+        className: "mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28",
+        children: e.jsx("div", {
+          className: "grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5",
+          children: _.map(({ Icon: s, title: a, body: u }, j) =>
+            e.jsxs(
+              r,
+              {
+                delay: j * 70,
+                as: "article",
+                children: [
+                  e.jsx(s, {
+                    size: 22,
+                    strokeWidth: 1.5,
+                    className: "text-rose",
+                  }),
+                  e.jsx("h2", {
+                    className: "so-wordmark mt-4 text-xl text-bone",
+                    children: a,
+                  }),
+                  e.jsx("p", {
+                    className: "mt-2.5 text-sm leading-relaxed text-fog",
+                    children: u,
+                  }),
+                ],
+              },
+              a,
+            ),
+          ),
+        }),
+      }),
+      e.jsxs("section", {
+        id: "collection",
+        className:
+          "mx-auto max-w-[1400px] scroll-mt-24 px-5 pb-20 md:px-10 md:pb-28",
+        children: [
+          e.jsx(r, {
+            className:
+              "flex flex-col gap-6 border-t so-hairline pt-12 md:flex-row md:items-end md:justify-between",
+            children: e.jsxs("div", {
+              children: [
+                e.jsx("p", {
+                  className: "so-label text-rose",
+                  children: "La collection",
+                }),
+                e.jsx("h2", {
+                  className:
+                    "so-wordmark mt-3 text-[clamp(2.5rem,7vw,5rem)] text-bone",
+                  children: "Quatre t-shirts",
+                }),
+                e.jsxs("p", {
+                  className: "so-editorial mt-3 max-w-lg text-lg text-fog",
+                  children: [
+                    "Prix unique de ",
+                    m(x),
+                    ". Tailles XS à XXL. Fais défiler chaque pièce pour voir l'avant et l'arrière. Une empreinte est demandée par pièce au moment de la commande.",
+                  ],
+                }),
+              ],
+            }),
+          }),
+          e.jsx("div", {
+            className: "mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4",
+            children: g.map((s, a) =>
+              e.jsx(
+                r,
+                {
+                  delay: (a % 4) * 80,
+                  children: e.jsx(w, { product: s, index: a }),
+                },
+                s.id,
+              ),
+            ),
+          }),
+        ],
+      }),
+      e.jsx("section", {
+        id: "lettre",
+        className: "scroll-mt-24 border-y so-hairline bg-ink-900",
+        children: e.jsx("div", {
+          className: "mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28",
+          children: e.jsxs(r, {
+            className:
+              "grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16",
+            children: [
+              e.jsxs("div", {
+                children: [
+                  e.jsx("p", {
+                    className: "so-label text-rose",
+                    children: "The Letter",
+                  }),
+                  e.jsxs("h2", {
+                    className:
+                      "so-editorial mt-3 text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.95] text-bone",
+                    children: [
+                      "Chaque collection ",
+                      e.jsx("em", {
+                        className: "text-rose",
+                        children: "est une",
+                      }),
+                      " lettre",
+                    ],
+                  }),
+                  e.jsx("div", {
+                    className: "mt-6 flex flex-col gap-5",
+                    children: v.map((s) =>
+                      e.jsx(
+                        "p",
+                        {
+                          className:
+                            "max-w-md text-sm leading-relaxed text-fog md:text-base",
+                          children: s,
+                        },
+                        s,
+                      ),
+                    ),
+                  }),
+                  e.jsxs("button", {
+                    type: "button",
+                    onClick: () => t(!0),
+                    className: "so-btn so-btn-solid so-btn-sheen mt-8",
+                    children: [
+                      "Ouvrir l'enveloppe ",
+                      e.jsx(i, { size: 15, strokeWidth: 2.6 }),
+                    ],
+                  }),
+                ],
+              }),
+              e.jsx("div", {
+                className: "flex justify-center lg:justify-end",
+                children: e.jsx(z, { onOpen: () => t(!0) }),
+              }),
+            ],
+          }),
+        }),
+      }),
+      e.jsxs("section", {
+        id: "histoire",
+        className: "relative isolate scroll-mt-24 overflow-hidden",
+        children: [
+          e.jsx("img", {
+            src: c("/img/story-backdrop.jpg", {
+              w: 1800,
+              h: 1100,
+              fit: "cover",
+            }),
+            alt: "",
+            "aria-hidden": "true",
+            className: "absolute inset-0 h-full w-full object-cover",
+          }),
+          e.jsx("div", {
+            className:
+              "absolute inset-0 bg-linear-to-r from-ink-950 via-ink-950/92 to-ink-950/60",
+            "aria-hidden": "true",
+          }),
+          e.jsx("div", {
+            className:
+              "relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36",
+            children: e.jsxs(r, {
+              className: "max-w-2xl",
+              children: [
+                e.jsx("p", {
+                  className: "so-label text-rose",
+                  children: "Notre histoire",
+                }),
+                e.jsxs("h2", {
+                  className:
+                    "so-wordmark mt-4 text-[clamp(2.25rem,6vw,4.5rem)] text-bone",
+                  children: [
+                    "Pourquoi",
+                    e.jsx("br", {}),
+                    e.jsx("span", {
+                      className: "text-rose",
+                      children: "« Sold Out » ?",
+                    }),
+                  ],
+                }),
+                e.jsxs("div", {
+                  className:
+                    "mt-7 flex flex-col gap-5 text-base leading-relaxed text-fog",
+                  children: [
+                    e.jsx("p", {
+                      children:
+                        "Dans un monde de milliards de personnes, il n'existe qu'une seule personne exactement comme toi. Ton empreinte digitale en est la preuve : tu es « Sold Out », et personne d'autre ne possède la même.",
+                    }),
+                    e.jsx("p", {
+                      children:
+                        "Sold Out est né de cette conviction. Nous célébrons celles et ceux qui refusent de suivre la foule, assument leur identité et choisissent de laisser leur propre empreinte dans le monde.",
+                    }),
+                    e.jsx("p", {
+                      className: "so-editorial text-2xl leading-snug text-bone",
+                      children:
+                        "Sold Out n'est pas seulement une marque de vêtements. C'est un mouvement.",
+                    }),
+                  ],
+                }),
+                e.jsxs("div", {
+                  className: "mt-10 flex items-center gap-4",
+                  children: [
+                    e.jsx(q, {
+                      size: 18,
+                      className: "shrink-0 text-rose",
+                      strokeWidth: 1.8,
+                    }),
+                    e.jsx("p", {
+                      className: "text-sm text-fog",
+                      children:
+                        "Atelier à Dakar — livraison partout dans le monde",
+                    }),
+                  ],
+                }),
+              ],
+            }),
+          }),
+        ],
+      }),
+      e.jsxs("section", {
+        className: "mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28",
+        children: [
+          e.jsxs(r, {
+            children: [
+              e.jsx("p", {
+                className: "so-label text-rose",
+                children: "Commander",
+              }),
+              e.jsx("h2", {
+                className:
+                  "so-wordmark mt-3 text-[clamp(2.25rem,6vw,4rem)] text-bone",
+                children: "Trois étapes",
+              }),
+            ],
+          }),
+          e.jsx("div", {
+            className: "mt-12 grid gap-5 md:grid-cols-3",
+            children: W.map((s, a) =>
+              e.jsxs(
+                r,
+                {
+                  delay: a * 100,
+                  as: "article",
+                  className: "rounded-2xl border so-hairline bg-ink-900 p-7",
+                  children: [
+                    e.jsx("span", {
+                      className: "so-wordmark so-outline-text text-5xl",
+                      children: s.no,
+                    }),
+                    e.jsx("h3", {
+                      className: "so-wordmark mt-5 text-xl text-bone",
+                      children: s.title,
+                    }),
+                    e.jsx("p", {
+                      className: "mt-2.5 text-sm leading-relaxed text-fog",
+                      children: s.body,
+                    }),
+                  ],
+                },
+                s.no,
+              ),
+            ),
+          }),
+        ],
+      }),
+      e.jsx("section", {
+        className: "border-t so-hairline bg-ink-900",
+        children: e.jsx("div", {
+          className:
+            "mx-auto max-w-[1400px] px-5 py-24 text-center md:px-10 md:py-32",
+          children: e.jsxs(r, {
+            children: [
+              e.jsxs("div", {
+                className: "relative mx-auto grid h-28 w-28 place-items-center",
+                children: [
+                  e.jsx("span", {
+                    className:
+                      "absolute inset-0 rounded-full border border-rose/30 so-pulse-ring",
+                    "aria-hidden": "true",
+                  }),
+                  e.jsx(n, { className: "h-20 w-auto text-rose" }),
+                ],
+              }),
+              e.jsx("h2", {
+                className:
+                  "so-wordmark mx-auto mt-10 max-w-3xl text-[clamp(2.25rem,7vw,5.5rem)] text-bone",
+                children: "Laisse ta marque",
+              }),
+              e.jsx("p", {
+                className:
+                  "so-editorial mx-auto mt-5 max-w-xl text-xl text-fog",
+                children:
+                  "Drop 01 est limité à quatre pièces. Quand c'est parti, c'est parti.",
+              }),
+              e.jsxs("div", {
+                className:
+                  "mt-10 flex flex-wrap items-center justify-center gap-3",
+                children: [
+                  e.jsxs(o, {
+                    to: "/",
+                    hash: "collection",
+                    className: "so-btn so-btn-hot so-btn-sheen",
+                    children: [
+                      "Choisir ma pièce ",
+                      e.jsx(i, { size: 15, strokeWidth: 2.6 }),
+                    ],
+                  }),
+                  e.jsx("a", {
+                    href: f,
+                    target: "_blank",
+                    rel: "noreferrer noopener",
+                    className: "so-btn so-btn-ghost",
+                    children: "Écrire sur WhatsApp",
+                  }),
+                ],
+              }),
+            ],
+          }),
+        }),
+      }),
+      e.jsx(I, { open: l, onClose: () => t(!1) }),
+    ],
+  });
+}
+export { R as component };

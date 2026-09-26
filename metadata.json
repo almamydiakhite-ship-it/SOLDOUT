@@ -1,0 +1,6 @@
+{
+  "name": "SOLD OUT — Drop 01 “The Letter”",
+  "description": "Quatre t-shirts, une lettre et une empreinte : la tienne. Drop 01 — The Letter, écrit à Dakar, porté partout dans le monde.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
