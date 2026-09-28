@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { CartLine, EnrichedCartLine, Product } from '../types';
-import { PRODUCTS, UNIT_PRICE } from '../data/products';
+import { UNIT_PRICE } from '../data/products';
+import { useProducts } from './ProductsContext';
 
-const CART_STORAGE_KEY = 'soldout.cart.v1';
+const CART_STORAGE_KEY = 'soldout.cart.v2';
 
 interface CartContextValue {
   lines: EnrichedCartLine[];
@@ -11,7 +12,7 @@ interface CartContextValue {
   isCartOpen: boolean;
   openCart: () => void;
   closeCart: () => void;
-  addLine: (productId: string, size: string, quantity?: number) => void;
+  addLine: (productId: string, size: string, quantity?: number) => boolean;
   setQuantity: (lineId: string, quantity: number) => void;
   removeLine: (lineId: string) => void;
   setFingerprint: (lineId: string, file: File) => void;
@@ -34,8 +35,7 @@ function loadCartFromStorage(): CartLine[] {
         typeof item === 'object' &&
         typeof item.lineId === 'string' &&
         typeof item.size === 'string' &&
-        typeof item.quantity === 'number' &&
-        PRODUCTS.some((p) => p.id === item.productId)
+        typeof item.quantity === 'number'
     );
   } catch {
     return [];
@@ -43,6 +43,7 @@ function loadCartFromStorage(): CartLine[] {
 }
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { products } = useProducts();
   const [rawLines, setRawLines] = useState<CartLine[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -69,24 +70,34 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [rawLines, isLoaded]);
 
-  const addLine = useCallback((productId: string, size: string, quantity = 1) => {
-    setRawLines((prev) => {
-      const existingIndex = prev.findIndex((item) => item.productId === productId && item.size === size);
-      if (existingIndex > -1) {
-        const updated = [...prev];
-        updated[existingIndex] = {
-          ...updated[existingIndex],
-          quantity: Math.min(20, updated[existingIndex].quantity + quantity),
-        };
-        return updated;
+  const addLine = useCallback(
+    (productId: string, size: string, quantity = 1) => {
+      const targetProduct = products.find((p) => p.id === productId);
+      if (targetProduct?.isSoldOut) {
+        return false;
       }
-      const lineId = typeof crypto !== 'undefined' && 'randomUUID' in crypto
-        ? crypto.randomUUID()
-        : `line-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
-      return [...prev, { lineId, productId, size, quantity }];
-    });
-    setIsCartOpen(true);
-  }, []);
+
+      setRawLines((prev) => {
+        const existingIndex = prev.findIndex((item) => item.productId === productId && item.size === size);
+        if (existingIndex > -1) {
+          const updated = [...prev];
+          updated[existingIndex] = {
+            ...updated[existingIndex],
+            quantity: Math.min(20, updated[existingIndex].quantity + quantity),
+          };
+          return updated;
+        }
+        const lineId =
+          typeof crypto !== 'undefined' && 'randomUUID' in crypto
+            ? crypto.randomUUID()
+            : `line-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+        return [...prev, { lineId, productId, size, quantity }];
+      });
+      setIsCartOpen(true);
+      return true;
+    },
+    [products]
+  );
 
   const setQuantity = useCallback((lineId: string, quantity: number) => {
     setRawLines((prev) =>
@@ -119,17 +130,18 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const enrichedLines = useMemo(() => {
     return rawLines.flatMap((line) => {
-      const product = PRODUCTS.find((p) => p.id === line.productId);
+      const product = products.find((p) => p.id === line.productId);
       if (!product) return [];
+      const itemPrice = product.price || UNIT_PRICE;
       return [
         {
           ...line,
           product,
-          lineTotal: UNIT_PRICE * line.quantity,
+          lineTotal: itemPrice * line.quantity,
         },
       ];
     });
-  }, [rawLines]);
+  }, [rawLines, products]);
 
   const count = useMemo(() => enrichedLines.reduce((acc, line) => acc + line.quantity, 0), [enrichedLines]);
   const total = useMemo(() => enrichedLines.reduce((acc, line) => acc + (line.lineTotal || 0), 0), [enrichedLines]);

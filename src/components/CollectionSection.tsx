@@ -1,8 +1,11 @@
 import React from 'react';
-import { products, UNIT_PRICE } from '../data/products';
+import { useProducts } from '../context/ProductsContext';
+import { UNIT_PRICE } from '../data/products';
 import ProductCard from './ProductCard';
 
 export default function CollectionSection() {
+  const { products } = useProducts();
+
   return (
     <section
       id="collection"
@@ -12,10 +15,10 @@ export default function CollectionSection() {
         <div>
           <p className="so-label text-[#e7a3b8]">La collection</p>
           <h2 className="so-wordmark mt-3 text-[clamp(2.5rem,7vw,5rem)] text-[#f4f1ec]">
-            Quatre t-shirts
+            {products.length === 4 ? 'Quatre t-shirts' : `${products.length} créations`}
           </h2>
           <p className="so-editorial mt-3 max-w-lg text-lg text-[#9b93a3]">
-            Prix unique de {UNIT_PRICE.toLocaleString('fr-FR')} FCFA. Tailles XS à XXL. Fais défiler chaque pièce pour voir l'avant et l'arrière. Une empreinte est demandée par pièce au moment de la commande.
+            Prix de référence : {UNIT_PRICE.toLocaleString('fr-FR')} FCFA. Tailles XS à XXL. Fais défiler chaque pièce pour voir l'avant et l'arrière. Une empreinte est demandée par pièce au moment de la commande.
           </p>
         </div>
       </div>

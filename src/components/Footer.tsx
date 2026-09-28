@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Phone } from 'lucide-react';
+import { Instagram, Phone, Lock } from 'lucide-react';
 import FingerprintLogo from './FingerprintLogo';
 import { products, WHATSAPP_URL, WHATSAPP_PHONE } from '../data/products';
 
@@ -39,7 +39,11 @@ const socialLinks = [
   },
 ];
 
-export default function Footer() {
+interface FooterProps {
+  onOpenAdmin?: () => void;
+}
+
+export default function Footer({ onOpenAdmin }: FooterProps = {}) {
   return (
     <footer id="contact" className="scroll-mt-24 border-t so-hairline bg-[#08070a]">
       <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-10 md:py-24">
@@ -148,9 +152,20 @@ export default function Footer() {
           <p className="so-label text-[0.5625rem] text-[#6d6577]">
             © {new Date().getFullYear()} Sold Out — Tous droits réservés
           </p>
-          <p className="so-label text-[0.5625rem] text-[#6d6577]">
-            Uniqueness is identity
-          </p>
+          <div className="flex items-center gap-4">
+            {onOpenAdmin && (
+              <button
+                type="button"
+                onClick={onOpenAdmin}
+                className="so-label flex items-center gap-1.5 text-[0.5625rem] text-[#6d6577] transition-colors hover:text-[#e7a3b8] cursor-pointer"
+              >
+                <Lock size={10} /> Espace Administrateur
+              </button>
+            )}
+            <p className="so-label text-[0.5625rem] text-[#6d6577]">
+              Uniqueness is identity
+            </p>
+          </div>
         </div>
       </div>
     </footer>

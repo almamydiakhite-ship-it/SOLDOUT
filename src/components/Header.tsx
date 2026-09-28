@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, ShoppingBag, Lock } from 'lucide-react';
 import { FingerprintLogo } from './FingerprintLogo';
 import { useCart } from '../context/CartContext';
 import { WHATSAPP_URL } from '../data/products';
 
 interface HeaderProps {
   onOpenCart?: () => void;
+  onOpenAdmin?: () => void;
 }
 
 const NAV_LINKS = [
@@ -16,7 +17,7 @@ const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenCart, onOpenAdmin }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { count, openCart } = useCart();
@@ -84,6 +85,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
 
         {/* Right action buttons */}
         <div className="ml-auto flex items-center gap-2 lg:ml-8">
+          {/* Admin discreet button */}
+          {onOpenAdmin && (
+            <button
+              type="button"
+              onClick={onOpenAdmin}
+              className="grid h-9 w-9 place-items-center rounded-full border so-hairline text-fog/80 transition-colors hover:border-rose/60 hover:text-rose cursor-pointer"
+              title="Espace Administrateur Sécurisé"
+              aria-label="Espace Administrateur"
+            >
+              <Lock size={14} />
+            </button>
+          )}
+
           <a
             href={WHATSAPP_URL}
             target="_blank"

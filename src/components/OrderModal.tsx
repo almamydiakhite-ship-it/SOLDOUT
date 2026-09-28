@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext';
 import FingerprintLogo from './FingerprintLogo';
 import FingerprintScanner from './FingerprintScanner';
 import { WHATSAPP_PHONE } from '../data/products';
+import { ordersService } from '../services/ordersService';
 
 interface OrderModalProps {
   isOpen: boolean;
@@ -113,7 +114,35 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
       .filter(Boolean)
       .join('\n');
 
-    const waLink = `https://wa.me/221785426344?text=${encodeURIComponent(message)}`;
+    // Save order in admin order tracking system
+    try {
+      ordersService.addOrder({
+        id: `ord-${Date.now()}`,
+        reference: ref,
+        customerName,
+        phone,
+        zone,
+        address,
+        note: note.trim() || undefined,
+        items: lines.map((l) => ({
+          productId: l.product.id,
+          productName: l.product.name,
+          size: l.size,
+          quantity: l.quantity,
+          unitPrice: l.product.price || 20000,
+          fingerprintName: fingerprintFiles[l.lineId] || biometricScan.certificateId,
+        })),
+        totalAmount: total,
+        biometricCert: biometricScan.certificateId,
+        fingerprintScanned: biometricScan.scanned,
+        status: 'Reçue',
+        createdAt: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error('Failed to register order in ordersService', err);
+    }
+
+    const waLink = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
     window.open(waLink, '_blank');
     clear();
     onClose();
